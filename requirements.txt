@@ -1,0 +1,10 @@
+yfinance==1.3.0
+pandas
+numpy
+psycopg2-binary
+sqlalchemy
+scikit-learn
+xgboost
+tensorflow
+keras
+tzdata

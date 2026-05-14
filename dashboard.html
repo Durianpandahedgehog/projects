@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Corn Signal — May 12, 2026</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f8fafc;color:#0f172a;padding:32px;min-height:100vh}
+.container{max-width:960px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}
+.app-name{font-size:13px;font-weight:600;color:#64748b;letter-spacing:1px;text-transform:uppercase}
+.date-label{font-size:13px;color:#94a3b8}
+.signal-banner{background:#fffbeb;border:1.5px solid #d9770640;border-radius:16px;padding:28px 32px;margin-bottom:20px;display:flex;align-items:center;gap:24px}
+.signal-icon{width:64px;height:64px;background:#d97706;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.signal-icon i{font-size:32px;color:white}
+.signal-text h1{font-size:32px;font-weight:700;color:#d97706;letter-spacing:-0.5px}
+.signal-text p{font-size:15px;color:#475569;margin-top:6px;line-height:1.5;max-width:580px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px}
+.card{background:white;border:1px solid #e2e8f0;border-radius:12px;padding:20px}
+.card-label{font-size:11px;font-weight:600;color:#94a3b8;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
+.card-value{font-size:28px;font-weight:700;color:#0f172a;letter-spacing:-0.5px}
+.card-sub{font-size:13px;margin-top:4px}
+.conf-row{display:flex;flex-direction:column;gap:10px;margin-top:16px}
+.conf-item label{display:flex;justify-content:space-between;font-size:13px;color:#64748b;margin-bottom:5px}
+.conf-item label span:last-child{font-weight:600;color:#0f172a}
+.bar-bg{background:#f1f5f9;border-radius:99px;height:8px;overflow:hidden}
+.bar-fill{height:100%;border-radius:99px}
+.chart-card{background:white;border:1px solid #e2e8f0;border-radius:12px;padding:24px;margin-bottom:20px}
+.chart-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.chart-title{font-size:15px;font-weight:600;color:#0f172a}
+.legend{display:flex;gap:16px}
+.leg-item{display:flex;align-items:center;gap:6px;font-size:12px;color:#64748b}
+.leg-dot{width:10px;height:4px;border-radius:2px}
+.model-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.model-col-label{font-size:11px;font-weight:600;color:#94a3b8;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px}
+.mini-bar-row{display:flex;flex-direction:column;gap:8px}
+.mini-bar-item{}
+.mini-bar-header{display:flex;justify-content:space-between;font-size:12px;color:#64748b;margin-bottom:4px}
+.mini-bar-header span:last-child{font-weight:600;color:#0f172a}
+.mini-bg{background:#f1f5f9;border-radius:99px;height:6px}
+.mini-fill{height:100%;border-radius:99px}
+.footer{text-align:center;font-size:12px;color:#94a3b8;margin-top:24px}
+.footer strong{color:#64748b}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="top">
+    <span class="app-name">Corn Trading Signal</span>
+    <span class="date-label">May 12, 2026</span>
+  </div>
+
+  <div class="signal-banner">
+    <div class="signal-icon"><i class="ti ti-minus"></i></div>
+    <div class="signal-text">
+      <h1>HOLD</h1>
+      <p>The model sees no strong price movement coming. Stay with your current position for now.</p>
+    </div>
+  </div>
+
+  <div class="grid3">
+    <div class="card">
+      <div class="card-label">Current Price</div>
+      <div class="card-value">$478.75</div>
+      <div class="card-sub" style="color:#16a34a">
+        +18.0 (+3.91%) today
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Performance</div>
+      <div style="margin-top:4px">
+        <div style="display:flex;justify-content:space-between;margin-bottom:10px">
+          <span style="font-size:13px;color:#64748b">This week</span>
+          <span style="font-size:15px;font-weight:700;color:#16a34a">+2.85%</span>
+        </div>
+        <div style="display:flex;justify-content:space-between">
+          <span style="font-size:13px;color:#64748b">This month</span>
+          <span style="font-size:15px;font-weight:700;color:#16a34a">+8.75%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Ensemble Confidence</div>
+      <div class="conf-row">
+        <div class="conf-item">
+          <label><span>BUY</span><span>24%</span></label>
+          <div class="bar-bg"><div class="bar-fill" style="width:24%;background:#16a34a"></div></div>
+        </div>
+        <div class="conf-item">
+          <label><span>HOLD</span><span>60%</span></label>
+          <div class="bar-bg"><div class="bar-fill" style="width:60%;background:#d97706"></div></div>
+        </div>
+        <div class="conf-item">
+          <label><span>SELL</span><span>16%</span></label>
+          <div class="bar-bg"><div class="bar-fill" style="width:16%;background:#dc2626"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chart-card">
+    <div class="chart-header">
+      <span class="chart-title">Corn Price — Last 180 Days</span>
+      <div class="legend">
+        <div class="leg-item"><div class="leg-dot" style="background:#3b82f6"></div>Price</div>
+        <div class="leg-item"><div class="leg-dot" style="background:#f59e0b"></div>30-day avg</div>
+        <div class="leg-item"><div class="leg-dot" style="background:#8b5cf6"></div>90-day avg</div>
+        <div class="leg-item"><div class="leg-dot" style="background:#e2e8f0;width:16px"></div>Bollinger Bands</div>
+      </div>
+    </div>
+    <div style="position:relative;height:320px">
+      <canvas id="priceChart" role="img" aria-label="Corn price chart for last 180 days">Corn price data over the last 180 trading days.</canvas>
+    </div>
+  </div>
+
+  <div class="chart-card">
+    <div class="chart-header">
+      <span class="chart-title">Model Breakdown</span>
+      <span style="font-size:12px;color:#94a3b8">XGBoost 40% + LSTM 60% weighted ensemble</span>
+    </div>
+    <div class="model-grid">
+
+      <div>
+        <div class="model-col-label">XGBoost</div>
+        <div class="mini-bar-row">
+          <div class="mini-bar-item">
+            <div class="mini-bar-header"><span>BUY</span><span>13%</span></div>
+            <div class="mini-bg"><div class="mini-fill" style="width:13%;background:#16a34a"></div></div>
+          </div>
+          <div class="mini-bar-item">
+            <div class="mini-bar-header"><span>HOLD</span><span>80%</span></div>
+            <div class="mini-bg"><div class="mini-fill" style="width:80%;background:#d97706"></div></div>
+          </div>
+          <div class="mini-bar-item">
+            <div class="mini-bar-header"><span>SELL</span><span>7%</span></div>
+            <div class="mini-bg"><div class="mini-fill" style="width:7%;background:#dc2626"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="model-col-label">LSTM</div>
+        <div class="mini-bar-row">
+          <div class="mini-bar-item">
+            <div class="mini-bar-header"><span>BUY</span><span>32%</span></div>
+            <div class="mini-bg"><div class="mini-fill" style="width:32%;background:#16a34a"></div></div>
+          </div>
+          <div class="mini-bar-item">
+            <div class="mini-bar-header"><span>HOLD</span><span>47%</span></div>
+            <div class="mini-bg"><div class="mini-fill" style="width:47%;background:#d97706"></div></div>
+          </div>
+          <div class="mini-bar-item">
+            <div class="mini-bar-header"><span>SELL</span><span>21%</span></div>
+            <div class="mini-bg"><div class="mini-fill" style="width:21%;background:#dc2626"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="model-col-label">Ensemble</div>
+        <div class="mini-bar-row">
+          <div class="mini-bar-item">
+            <div class="mini-bar-header"><span>BUY</span><span>24%</span></div>
+            <div class="mini-bg"><div class="mini-fill" style="width:24%;background:#16a34a"></div></div>
+          </div>
+          <div class="mini-bar-item">
+            <div class="mini-bar-header"><span>HOLD</span><span>60%</span></div>
+            <div class="mini-bg"><div class="mini-fill" style="width:60%;background:#d97706"></div></div>
+          </div>
+          <div class="mini-bar-item">
+            <div class="mini-bar-header"><span>SELL</span><span>16%</span></div>
+            <div class="mini-bg"><div class="mini-fill" style="width:16%;background:#dc2626"></div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer">
+    Powered by XGBoost + LSTM ensemble trained on 20 years of CBOT corn futures data &nbsp;·&nbsp;
+    <strong>Not financial advice.</strong> Always do your own research before trading.
+  </div>
+
+</div>
+<script>
+const d = {"dates": ["2025-08-25", "2025-08-26", "2025-08-27", "2025-08-28", "2025-08-29", "2025-09-02", "2025-09-03", "2025-09-04", "2025-09-05", "2025-09-08", "2025-09-09", "2025-09-10", "2025-09-11", "2025-09-12", "2025-09-15", "2025-09-16", "2025-09-17", "2025-09-18", "2025-09-19", "2025-09-22", "2025-09-23", "2025-09-24", "2025-09-25", "2025-09-26", "2025-09-29", "2025-09-30", "2025-10-01", "2025-10-02", "2025-10-03", "2025-10-06", "2025-10-07", "2025-10-08", "2025-10-09", "2025-10-10", "2025-10-13", "2025-10-14", "2025-10-15", "2025-10-16", "2025-10-17", "2025-10-20", "2025-10-21", "2025-10-22", "2025-10-23", "2025-10-24", "2025-10-27", "2025-10-28", "2025-10-29", "2025-10-30", "2025-10-31", "2025-11-03", "2025-11-04", "2025-11-05", "2025-11-06", "2025-11-07", "2025-11-10", "2025-11-11", "2025-11-12", "2025-11-13", "2025-11-14", "2025-11-17", "2025-11-18", "2025-11-19", "2025-11-20", "2025-11-21", "2025-11-24", "2025-11-25", "2025-11-26", "2025-11-28", "2025-12-01", "2025-12-02", "2025-12-03", "2025-12-04", "2025-12-05", "2025-12-08", "2025-12-09", "2025-12-10", "2025-12-11", "2025-12-12", "2025-12-15", "2025-12-16", "2025-12-17", "2025-12-18", "2025-12-19", "2025-12-22", "2025-12-23", "2025-12-24", "2025-12-26", "2025-12-29", "2025-12-30", "2025-12-31", "2026-01-02", "2026-01-05", "2026-01-06", "2026-01-07", "2026-01-08", "2026-01-09", "2026-01-12", "2026-01-13", "2026-01-14", "2026-01-15", "2026-01-16", "2026-01-20", "2026-01-21", "2026-01-22", "2026-01-23", "2026-01-26", "2026-01-27", "2026-01-28", "2026-01-29", "2026-01-30", "2026-02-02", "2026-02-03", "2026-02-04", "2026-02-05", "2026-02-06", "2026-02-09", "2026-02-10", "2026-02-11", "2026-02-12", "2026-02-13", "2026-02-17", "2026-02-18", "2026-02-19", "2026-02-20", "2026-02-23", "2026-02-24", "2026-02-25", "2026-02-26", "2026-02-27", "2026-03-02", "2026-03-03", "2026-03-04", "2026-03-05", "2026-03-06", "2026-03-09", "2026-03-10", "2026-03-11", "2026-03-12", "2026-03-13", "2026-03-16", "2026-03-17", "2026-03-18", "2026-03-19", "2026-03-20", "2026-03-23", "2026-03-24", "2026-03-25", "2026-03-26", "2026-03-27", "2026-03-30", "2026-03-31", "2026-04-01", "2026-04-02", "2026-04-06", "2026-04-07", "2026-04-08", "2026-04-09", "2026-04-10", "2026-04-13", "2026-04-14", "2026-04-15", "2026-04-16", "2026-04-17", "2026-04-20", "2026-04-21", "2026-04-22", "2026-04-23", "2026-04-24", "2026-04-27", "2026-04-28", "2026-04-29", "2026-04-30", "2026-05-01", "2026-05-04", "2026-05-05", "2026-05-06", "2026-05-07", "2026-05-08", "2026-05-11", "2026-05-12"], "prices": [389.25, 387.5, 382.5, 385.5, 398.0, 403.0, 397.75, 399.75, 399.0, 403.0, 401.25, 397.25, 399.0, 399.0, 423.25, 429.5, 426.75, 423.75, 424.0, 421.75, 426.25, 424.25, 425.75, 422.0, 421.5, 415.5, 416.5, 421.75, 419.0, 421.75, 419.75, 422.0, 418.25, 413.0, 410.75, 413.0, 416.75, 421.75, 422.5, 423.25, 419.75, 423.0, 428.0, 423.25, 428.75, 432.0, 434.0, 430.25, 431.5, 434.25, 431.5, 435.25, 428.75, 427.25, 429.75, 432.0, 435.25, 441.5, 430.25, 434.75, 436.75, 429.75, 426.5, 425.5, 423.75, 423.5, 431.75, 435.5, 432.75, 438.0, 431.5, 437.75, 436.75, 436.25, 440.75, 434.75, 435.25, 431.5, 439.75, 436.5, 440.5, 444.5, 443.75, 447.0, 447.5, 451.0, 450.0, 442.25, 440.5, 440.25, 437.5, 444.5, 444.0, 446.75, 446.0, 445.75, 421.5, 419.75, 422.0, 420.25, 424.75, 423.75, 421.75, 424.0, 430.5, 428.25, 426.5, 430.0, 430.75, 428.25, 425.75, 428.5, 429.5, 435.0, 430.25, 428.75, 428.75, 427.5, 431.25, 431.75, 426.25, 427.0, 425.75, 427.5, 427.5, 427.75, 430.5, 433.25, 438.75, 433.25, 434.25, 431.75, 441.5, 447.0, 437.5, 436.25, 444.25, 448.25, 452.5, 454.0, 454.0, 463.25, 469.75, 465.5, 459.5, 462.5, 467.25, 467.0, 462.0, 455.75, 457.75, 454.25, 452.25, 454.0, 449.0, 447.25, 444.0, 441.0, 440.25, 443.0, 451.25, 448.5, 448.75, 452.0, 453.75, 454.25, 455.5, 455.0, 460.75, 465.25, 466.5, 464.75, 468.25, 473.75, 465.5, 452.75, 452.75, 456.25, 460.75, 478.75], "ma30": [389.67, 389.21, 388.45, 387.9, 387.55, 387.53, 387.48, 387.52, 387.43, 387.54, 387.79, 388.06, 388.3, 388.47, 389.59, 391.01, 392.52, 393.98, 395.3, 396.6, 397.98, 399.73, 401.46, 403.03, 404.28, 405.37, 406.6, 407.99, 409.05, 410.17, 411.18, 412.33, 413.53, 414.44, 414.87, 415.2, 415.83, 416.57, 417.35, 418.03, 418.64, 419.5, 420.47, 421.28, 421.46, 421.54, 421.78, 422.0, 422.25, 422.67, 422.84, 423.21, 423.31, 423.48, 423.76, 424.31, 424.93, 425.59, 425.97, 426.4, 426.97, 427.23, 427.5, 427.92, 428.35, 428.7, 429.2, 429.66, 430.0, 430.49, 430.88, 431.38, 431.67, 432.1, 432.5, 432.59, 432.63, 432.68, 432.95, 433.03, 433.33, 433.63, 434.13, 434.79, 435.38, 436.02, 436.51, 436.53, 436.88, 437.06, 437.08, 437.58, 438.16, 438.87, 439.61, 440.35, 440.01, 439.48, 439.13, 438.53, 438.31, 437.84, 437.34, 436.93, 436.59, 436.38, 436.08, 436.03, 435.73, 435.46, 434.97, 434.43, 433.96, 433.56, 432.98, 432.24, 431.53, 431.04, 430.73, 430.45, 430.08, 429.49, 428.88, 428.24, 427.63, 427.03, 427.33, 427.78, 428.33, 428.77, 429.08, 429.35, 430.01, 430.78, 431.01, 431.28, 431.87, 432.48, 433.2, 434.06, 435.0, 436.16, 437.5, 438.52, 439.49, 440.62, 441.9, 443.22, 444.24, 445.04, 446.09, 447.0, 447.88, 448.77, 449.48, 450.13, 450.58, 450.84, 450.89, 451.22, 451.78, 452.34, 452.58, 452.75, 453.29, 453.89, 454.27, 454.49, 454.77, 455.14, 455.56, 455.61, 455.56, 455.83, 456.03, 455.71, 455.23, 454.87, 454.83, 455.59], "ma90": [424.85, 423.78, 422.67, 421.6, 420.74, 419.97, 419.09, 418.21, 417.36, 416.72, 415.99, 415.24, 414.55, 414.02, 413.75, 413.63, 413.49, 413.29, 413.11, 412.95, 412.82, 412.55, 412.35, 412.07, 411.7, 411.19, 410.68, 410.26, 409.81, 409.48, 409.18, 408.94, 408.71, 408.43, 408.12, 407.83, 407.54, 407.41, 407.23, 407.08, 406.87, 406.63, 406.55, 406.46, 406.41, 406.44, 406.61, 406.76, 407.0, 407.28, 407.43, 407.59, 407.69, 407.67, 407.65, 407.81, 408.08, 408.4, 408.65, 409.01, 409.27, 409.59, 409.83, 410.09, 410.26, 410.48, 410.84, 411.25, 411.59, 412.02, 412.44, 412.98, 413.48, 413.95, 414.52, 415.05, 415.64, 416.22, 416.83, 417.43, 418.05, 418.86, 419.63, 420.43, 421.14, 421.9, 422.68, 423.37, 423.96, 424.54, 425.08, 425.71, 426.39, 427.08, 427.61, 428.08, 428.35, 428.57, 428.83, 429.02, 429.28, 429.57, 429.83, 430.1, 430.18, 430.17, 430.17, 430.24, 430.31, 430.38, 430.38, 430.43, 430.47, 430.61, 430.71, 430.86, 430.99, 431.06, 431.19, 431.3, 431.38, 431.43, 431.51, 431.68, 431.86, 432.03, 432.18, 432.31, 432.49, 432.6, 432.76, 432.86, 433.01, 433.27, 433.37, 433.41, 433.53, 433.73, 433.96, 434.18, 434.43, 434.74, 435.2, 435.62, 435.95, 436.29, 436.65, 436.93, 437.28, 437.52, 437.75, 438.02, 438.31, 438.63, 438.91, 439.17, 439.31, 439.37, 439.45, 439.51, 439.73, 439.84, 439.98, 440.15, 440.3, 440.51, 440.74, 441.0, 441.23, 441.55, 441.84, 442.07, 442.34, 442.64, 442.84, 442.86, 442.89, 443.04, 443.27, 443.69], "bb_upper": [395.83, 395.6, 394.52, 392.98, 395.14, 398.81, 400.77, 402.89, 404.58, 406.91, 408.6, 408.58, 408.72, 408.57, 415.14, 422.07, 426.47, 429.3, 432.13, 434.11, 436.56, 438.03, 438.56, 438.25, 438.84, 439.0, 438.75, 438.9, 438.47, 438.43, 437.78, 436.05, 433.59, 429.84, 430.57, 429.57, 428.69, 428.45, 428.24, 428.42, 427.54, 427.34, 427.88, 428.04, 429.32, 431.34, 433.55, 434.58, 435.8, 437.4, 438.34, 439.83, 440.16, 439.79, 438.9, 438.2, 438.3, 440.32, 440.17, 440.44, 440.25, 439.71, 439.81, 439.49, 439.94, 440.24, 440.03, 440.51, 440.6, 441.18, 441.18, 441.57, 442.12, 442.48, 443.59, 443.74, 443.74, 442.5, 443.4, 443.57, 444.16, 445.82, 446.85, 448.19, 448.93, 449.95, 451.45, 451.68, 451.58, 451.64, 451.24, 451.61, 451.85, 452.34, 452.74, 452.8, 455.55, 457.65, 458.96, 460.22, 460.5, 460.33, 460.16, 459.17, 457.75, 455.46, 453.08, 451.98, 451.08, 450.07, 449.34, 447.33, 445.24, 442.67, 439.29, 434.78, 434.85, 434.51, 434.74, 434.6, 434.53, 434.35, 433.8, 433.51, 433.33, 433.32, 433.47, 434.01, 436.02, 436.45, 436.89, 437.04, 439.28, 442.44, 443.1, 443.54, 445.38, 447.87, 451.11, 454.21, 456.61, 460.91, 466.02, 469.17, 470.55, 472.04, 474.2, 476.05, 477.1, 476.76, 476.4, 474.97, 474.54, 474.48, 473.29, 471.64, 471.67, 472.53, 473.45, 473.84, 473.79, 472.9, 470.55, 468.92, 468.33, 467.24, 465.01, 462.43, 462.13, 464.16, 466.04, 467.67, 470.04, 473.38, 474.69, 474.66, 474.41, 473.86, 473.2, 476.15], "bb_lower": [371.82, 371.88, 372.03, 372.72, 371.41, 369.34, 369.0, 368.88, 368.65, 368.34, 368.27, 370.87, 373.23, 375.78, 373.16, 370.88, 371.2, 372.75, 373.6, 374.96, 376.21, 378.42, 382.21, 386.18, 387.94, 389.03, 391.15, 393.2, 395.63, 397.54, 400.04, 404.25, 408.64, 413.79, 411.8, 411.15, 411.04, 411.08, 411.13, 411.1, 411.33, 411.41, 411.09, 411.06, 410.5, 410.14, 409.68, 409.49, 409.52, 409.18, 409.41, 409.25, 409.96, 411.76, 414.55, 417.15, 418.9, 418.86, 419.78, 420.66, 422.55, 423.76, 423.51, 424.06, 423.11, 421.96, 421.94, 421.99, 422.03, 421.82, 421.82, 421.68, 421.93, 422.47, 422.46, 422.58, 422.58, 422.82, 422.88, 422.88, 422.67, 422.48, 423.17, 423.98, 425.62, 427.35, 427.68, 428.12, 429.0, 429.16, 430.16, 430.46, 430.95, 431.51, 431.63, 432.68, 428.55, 425.27, 422.19, 419.3, 417.45, 415.55, 413.51, 412.2, 411.93, 411.94, 411.97, 411.85, 411.77, 411.58, 411.13, 411.54, 412.18, 413.58, 415.39, 418.19, 418.85, 419.96, 420.66, 421.95, 422.17, 422.68, 423.63, 424.27, 424.14, 424.1, 424.36, 424.14, 422.93, 423.0, 423.41, 423.58, 422.55, 420.58, 420.65, 420.96, 420.67, 420.26, 419.14, 418.26, 418.64, 417.97, 417.25, 417.9, 419.72, 421.71, 423.22, 424.75, 426.03, 428.61, 431.33, 435.0, 436.51, 437.27, 439.61, 442.36, 442.3, 440.72, 438.57, 437.09, 436.86, 436.28, 436.53, 436.81, 436.82, 437.08, 438.14, 439.52, 439.7, 438.61, 437.61, 437.03, 436.26, 434.89, 435.24, 435.81, 436.94, 439.02, 441.72, 442.35]};
+const ctx = document.getElementById('priceChart').getContext('2d');
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: d.dates,
+    datasets: [
+      {
+        label: 'Bollinger Upper',
+        data: d.bb_upper,
+        borderColor: '#e2e8f0',
+        backgroundColor: 'rgba(226,232,240,0.3)',
+        borderWidth: 1,
+        borderDash: [4,4],
+        pointRadius: 0,
+        fill: '+1',
+        tension: 0.3
+      },
+      {
+        label: 'Bollinger Lower',
+        data: d.bb_lower,
+        borderColor: '#e2e8f0',
+        borderWidth: 1,
+        borderDash: [4,4],
+        pointRadius: 0,
+        fill: false,
+        tension: 0.3
+      },
+      {
+        label: '90-day avg',
+        data: d.ma90,
+        borderColor: '#8b5cf6',
+        borderWidth: 2,
+        pointRadius: 0,
+        fill: false,
+        tension: 0.3
+      },
+      {
+        label: '30-day avg',
+        data: d.ma30,
+        borderColor: '#f59e0b',
+        borderWidth: 2,
+        pointRadius: 0,
+        fill: false,
+        tension: 0.3
+      },
+      {
+        label: 'Price',
+        data: d.prices,
+        borderColor: '#3b82f6',
+        backgroundColor: 'rgba(59,130,246,0.08)',
+        borderWidth: 2.5,
+        pointRadius: 0,
+        fill: false,
+        tension: 0.3
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => ctx.dataset.label + ': $' + ctx.parsed.y.toFixed(2)
+        }
+      }
+    },
+    scales: {
+      x: {
+        ticks: { maxTicksLimit: 8, color: '#94a3b8', font: { size: 11 } },
+        grid: { color: '#f1f5f9' }
+      },
+      y: {
+        ticks: { color: '#94a3b8', font: { size: 11 }, callback: v => '$' + v },
+        grid: { color: '#f1f5f9' }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>

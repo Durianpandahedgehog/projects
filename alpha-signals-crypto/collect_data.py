@@ -6,7 +6,7 @@ import time
 
 DATA_DIR  = os.path.join(os.path.dirname(__file__), "data")
 CSV_PATH  = os.path.join(DATA_DIR, "Q_USDT_5m.csv")
-BASE_URL  = "https://fapi.binance.com"   # futures public API
+BASE_URL  = "https://api.binance.com"   # futures public API
 
 
 def fetch_ohlcv(symbol, timeframe="5m", days=180):
@@ -16,7 +16,7 @@ def fetch_ohlcv(symbol, timeframe="5m", days=180):
 
     all_candles = []
     while True:
-        url    = f"{BASE_URL}/fapi/v1/klines"
+        url    = f"{BASE_URL}/api/v3/klines"
         params = {
             "symbol"   : symbol,
             "interval" : timeframe,

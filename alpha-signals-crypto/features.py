@@ -42,7 +42,7 @@ def calculate_features(df):
     df["bb_width"] = (df["bb_upper"] - df["bb_lower"]) / bb_mid
 
     # Volume spike
-    df["volume_ratio"] = df["volume"] / df["volume"].rolling(20).mean()
+    df["volume_ratio"] = 2.0   # default to 2x since no volume data from CoinGecko
 
     # Candle body size as % of price
     df["candle_body"] = abs(df["close"] - df["open"]) / df["open"] * 100

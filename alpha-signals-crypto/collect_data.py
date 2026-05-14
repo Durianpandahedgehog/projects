@@ -1,51 +1,35 @@
+import ccxt
 import pandas as pd
-import requests
 from datetime import datetime, timedelta
 import os
 import time
 
 DATA_DIR  = os.path.join(os.path.dirname(__file__), "data")
 CSV_PATH  = os.path.join(DATA_DIR, "Q_USDT_5m.csv")
-BASE_URL  = "https://api.binance.com"   # futures public API
 
 
-def fetch_ohlcv(symbol, timeframe="5m", days=180):
+def fetch_ohlcv(symbol="Q/USDT:USDT", timeframe="5m", days=180):
     print(f"Fetching {symbol}...")
-    since  = int((datetime.utcnow() - timedelta(days=days)).timestamp() * 1000)
-    symbol = symbol.replace("/", "").replace(":USDT", "")   # QUSDT
-
+    exchange = ccxt.binance({"enableRateLimit": True})
+    since    = exchange.parse8601(
+        (datetime.utcnow() - timedelta(days=days)).strftime("%Y-%m-%dT00:00:00Z")
+    )
     all_candles = []
     while True:
-        url    = f"{BASE_URL}/api/v3/klines"
-        params = {
-            "symbol"   : symbol,
-            "interval" : timeframe,
-            "startTime": since,
-            "limit"    : 1000
-        }
-        resp    = requests.get(url, params=params, timeout=10)
-        candles = resp.json()
-
-        if not candles or not isinstance(candles, list):
+        candles = exchange.fetch_ohlcv(symbol, timeframe=timeframe, since=since, limit=1000)
+        if not candles:
             break
-
         all_candles.extend(candles)
         since = candles[-1][0] + 1
-
         if len(candles) < 1000:
             break
-        time.sleep(0.3)
+        time.sleep(0.5)
 
-    df = pd.DataFrame(all_candles, columns=[
-        "date", "open", "high", "low", "close", "volume",
-        "close_time", "quote_volume", "trades",
-        "taker_buy_base", "taker_buy_quote", "ignore"
-    ])
-    df = df[["date", "open", "high", "low", "close", "volume"]]
-    df["date"]  = pd.to_datetime(df["date"], unit="ms")
-    df          = df.set_index("date")
-    df          = df.astype(float)
-    df          = df[~df.index.duplicated(keep="last")]
+    df = pd.DataFrame(all_candles, columns=["date","open","high","low","close","volume"])
+    df["date"] = pd.to_datetime(df["date"], unit="ms")
+    df = df.set_index("date")
+    df = df.astype(float)
+    df = df[~df.index.duplicated(keep="last")]
     print(f"OK: {len(df)} candles fetched for {symbol}")
     return df
 

@@ -1,4 +1,4 @@
-ccxt
+requests
 pandas
 streamlit
 plotly

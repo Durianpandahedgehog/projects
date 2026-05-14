@@ -118,6 +118,17 @@ st.markdown("---")
 with st.spinner("Fetching live data from Binance..."):
     df = load_live_data()
 
+with st.spinner("Fetching live data from Binance..."):
+    df = load_live_data()
+
+if df is None or len(df) == 0:
+    st.error("Could not fetch data from Binance. Please try again in a moment.")
+    st.stop()
+    
+if df is None or len(df) == 0:
+    st.error("Could not fetch data from Binance. Please try again in a moment.")
+    st.stop()
+
 latest = df.iloc[-1]
 signal = latest["signal"]
 price  = latest["close"]
@@ -185,7 +196,7 @@ if signal in ["BUY", "SELL"]:
         st.markdown("<br>", unsafe_allow_html=True)
 
     else:
-        st.info("Signal detected but no clean R/R setup found. Wait for better entry.")
+        st.info("Signal detected but no clean R/R setup found. Wait for better entry.") 
 
 # ── METRICS ───────────────────────────────────────────────────────────────────
 

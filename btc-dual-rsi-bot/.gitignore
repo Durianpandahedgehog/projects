@@ -1,0 +1,9 @@
+data/
+*.csv
+*.json
+*.log
+*.lock
+*.tmp
+__pycache__/
+.env
+venv/

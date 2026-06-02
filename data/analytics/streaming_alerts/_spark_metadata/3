@@ -1,0 +1,4 @@
+v1
+{"path":"file:///Users/aurieevo/Desktop/The_Leftside_Undergrads_Final/data/analytics/streaming_alerts/part-00000-ad1b0d7c-f630-43ab-8a89-53235a482469-c000.snappy.parquet","size":3328,"isDir":false,"modificationTime":1777771320474,"blockReplication":1,"blockSize":33554432,"action":"add"}
+{"path":"file:///Users/aurieevo/Desktop/The_Leftside_Undergrads_Final/data/analytics/streaming_alerts/part-00001-490ffaa4-1b44-4767-bac6-d3de624a0cbb-c000.snappy.parquet","size":3377,"isDir":false,"modificationTime":1777771320472,"blockReplication":1,"blockSize":33554432,"action":"add"}
+{"path":"file:///Users/aurieevo/Desktop/The_Leftside_Undergrads_Final/data/analytics/streaming_alerts/part-00002-8a014f59-8ffe-4efd-88c8-9de852c8a108-c000.snappy.parquet","size":3505,"isDir":false,"modificationTime":1777771320475,"blockReplication":1,"blockSize":33554432,"action":"add"}

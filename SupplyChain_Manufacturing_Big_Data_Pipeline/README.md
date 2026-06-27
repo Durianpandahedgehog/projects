@@ -18,13 +18,13 @@ Our pipeline is built on four layers:
 3. **Stream** (Stage 3) — Kafka + Spark Structured Streaming for real-time machine telemetry
 4. **Orchestrate** (Stage 4) — Airflow DAGs for scheduling, quality gates, and monitoring
    
-See Architecture Diagram: https://github.com/aishanomani/The_Leftside_Undergrads_Final/blob/main/report/architecture-diagram.png
+See the architecture diagram: [`report/architecture-diagram.png`](./report/architecture-diagram.png)
 
 ### Steps
-1. Clone the repository:
+1. Clone the repository and move into this project folder:
 ```bash
-   git clone https://github.com/aishanomani/The_Leftside_Undergrads_Final
-   cd The_Leftside_Undergrads_Final
+   git clone https://github.com/durianpandahedgehog/projects
+   cd projects/SupplyChain_Manufacturing_Big_Data_Pipeline
 ```
 
 2. Downloaded the data:

@@ -1,0 +1,121 @@
+services:
+
+  db:
+    image: postgres:16
+    container_name: corn_db
+    restart: always
+    environment:
+      POSTGRES_USER: corn_user
+      POSTGRES_PASSWORD: corn_pass
+      POSTGRES_DB: corn_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  airflow_db:
+    image: postgres:16
+    container_name: airflow_db
+    restart: always
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    volumes:
+      - airflow_db_data:/var/lib/postgresql/data
+
+  airflow-init:
+    build:
+      context: .
+      dockerfile: Dockerfile.airflow
+    container_name: airflow_init
+    depends_on:
+      - airflow_db
+    environment:
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@airflow_db/airflow
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__WEBSERVER__SECRET_KEY: "corn_secret_key_123"
+    command: db init
+    restart: "no"
+
+  airflow-webserver:
+    build:
+      context: .
+      dockerfile: Dockerfile.airflow
+    container_name: airflow_webserver
+    restart: always
+    depends_on:
+      - airflow_db
+      - airflow-init
+    environment:
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@airflow_db/airflow
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+      AIRFLOW__WEBSERVER__SECRET_KEY: "corn_secret_key_123"
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: corn_db
+      DB_USER: corn_user
+      DB_PASS: corn_pass
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./collect_corn_data.py:/opt/airflow/collect_corn_data.py
+      - ./daily_signal.py:/opt/airflow/daily_signal.py
+      - ./models:/app/models
+    command: webserver
+
+  airflow-scheduler:
+    build:
+      context: .
+      dockerfile: Dockerfile.airflow
+    container_name: airflow_scheduler
+    restart: always
+    depends_on:
+      - airflow_db
+      - airflow-init
+    environment:
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@airflow_db/airflow
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+      AIRFLOW__WEBSERVER__SECRET_KEY: "corn_secret_key_123"
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: corn_db
+      DB_USER: corn_user
+      DB_PASS: corn_pass
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./collect_corn_data.py:/opt/airflow/collect_corn_data.py
+      - ./daily_signal.py:/opt/airflow/daily_signal.py
+      - ./models:/app/models
+    command: scheduler
+
+  app:
+    build: .
+    container_name: corn_app
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: corn_db
+      DB_USER: corn_user
+      DB_PASS: corn_pass
+    volumes:
+      - .:/app
+    stdin_open: true
+    tty: true
+    command: tail -f /dev/null
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+volumes:
+  postgres_data:
+  airflow_db_data:

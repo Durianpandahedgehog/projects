@@ -1,0 +1,10 @@
+# Trained models (large binary files)
+models/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Windows
+Thumbs.db
+desktop.ini

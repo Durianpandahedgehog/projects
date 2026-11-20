@@ -71,15 +71,16 @@ All datasets are pre-generated and available in the course data repository: http
 | `quality-inspections.json.gz` | Defect inspection results per batch |
 | `supplier-performance.json.gz` | Supplier delivery and quality scores |
 
-## Key Findings
-1. **Defect Rate by Factory and Shift** — Analysis of production lines shows that defect rates vary significantly across factories, production lines and shifts. Night shifts consistently showed higher defect rates, suggesting fatigue or less supervision as contributing factors.
+## Results
 
-2. **Top Defect Codes** — Quality inspection data identified the most frequent defect types by code and severity. A small number of defect codes accounted for the majority of total defects, indicating that targeted interventions on these categories would have the highest impact.
+- **Streaming stage (executed, `notebooks/03-streaming-pipeline.ipynb`):** per-machine baselines computed for 800 machines; 1-minute rolling windows sliding every 30 seconds over Kafka sensor events; WARNING (one threshold exceeded) and CRITICAL (both exceeded) alerts written to Parquet in `data/analytics/streaming_alerts/`.
+- **Batch analytics** (defect rates by factory and shift, top defect codes, inventory days-of-stock, supplier scorecard, supplier-to-production defect correlation, sensor anomalies vs downtime) are implemented as PySpark transforms in `notebooks/02-spark-transforms.ipynb`. That notebook is stored without executed outputs, so no figures are reported here.
 
-3. **Inventory Risk** — Several products were found to be at or below their reorder point with fewer than 7 days of stock remaining, creating stockout risk. Daily usage rates were used to calculate days of stock remaining for each product.
+## My contributions (Sai Han Shan Pha)
 
-4. **Supplier Scorecard** — Suppliers were ranked by average on-time delivery rate and defect rate. Suppliers with delivery rates below 90% or defect rates above 5% were flagged as underperforming and recommended for review or replacement.
+Team project, five members. My parts:
+- **Airflow orchestration:** `dags/batch_pipeline.py` (daily at 06:00: landing-zone check, data-quality gate, `spark-submit` transforms, curated-output validation, alerting; retries and per-task SLAs) and `dags/streaming_monitor.py` (every 30 minutes: Kafka topic health, consumer-group lag, offset progress).
+- **Infrastructure:** the Airflow, Spark and HDFS services in `docker-compose.yml`, plus `hadoop.env`.
+- Setup and team sections of this README.
 
-5. **Supplier vs. Production Defect Correlation** — Cross-domain analysis showed a positive correlation between high supplier defect rates and downstream production defect rates, confirming that upstream supplier quality directly impacts manufacturing outcomes.
-
-6. **Sensor Anomalies and Defects** — Days with abnormally high temperature or vibration readings from equipment sensors corresponded to higher downtime and elevated defect rates, supporting the case for a predictive maintenance program.
+Kafka producer, Spark transforms and the streaming notebook were written by teammates.
